@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface MovieClient {
+interface MDBClient {
 
     @GET(END_POINT_POPULAR_MOVIES)
     fun getPopularMovieRepo(@Query("api_key") key: String?): Observable<PopularMovieModel>
