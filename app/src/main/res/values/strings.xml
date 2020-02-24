@@ -2,6 +2,6 @@
     <string name="app_name">The Movie db</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="click_to_register">Click here to register</string>
+    <string name="click_to_register"><u>Click here to register</u></string>
     <string name="register">Register</string>
 </resources>
