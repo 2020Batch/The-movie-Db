@@ -1,7 +1,8 @@
-package com.example.themoviedb
+package com.example.themoviedb.application
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.themoviedb.R
 
 class MainActivity : AppCompatActivity() {
 
