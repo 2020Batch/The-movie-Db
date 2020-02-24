@@ -4,4 +4,5 @@
     <dimen name="login_password_marginTop">16dp</dimen>
     <dimen name="btnlogin_marginTop">16dp</dimen>
     <dimen name="registerTextMarginTop">16dp</dimen>
+    <dimen name="marginTop">8dp</dimen>
 </resources>

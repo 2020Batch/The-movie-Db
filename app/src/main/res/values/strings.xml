@@ -3,4 +3,5 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="click_to_register">Click here to register</string>
+    <string name="register">Register</string>
 </resources>
