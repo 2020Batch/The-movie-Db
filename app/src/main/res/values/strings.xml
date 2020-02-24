@@ -10,4 +10,6 @@
     <string name="password">Password</string>
     <string name="click_to_register"><u>Click here to register</u></string>
     <string name="register">Register</string>
+    <string name="this_is_splash_screen">This is Splash Screen</string>
+    <string name="login">Login</string>
 </resources>

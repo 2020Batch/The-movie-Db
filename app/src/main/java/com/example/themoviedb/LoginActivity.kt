@@ -1,10 +1,9 @@
-package com.example.themoviedb.application
+package com.example.themoviedb
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.themoviedb.R
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
