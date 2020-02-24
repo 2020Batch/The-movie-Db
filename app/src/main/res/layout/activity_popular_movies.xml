@@ -12,9 +12,7 @@
         android:id="@+id/rv_popularMovies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        android:visibility="gone" />
 
 
 
@@ -26,12 +24,14 @@
 
     <TextView
         android:id="@+id/tv_errorMessage"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/connection_error"/>
 
     <Button
         android:id="@+id/btn_retryLoading"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/retry"/>
