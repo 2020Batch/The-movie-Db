@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface MovieClient {
 
-    @GET("movie/popular?")
+    @GET(END_POINT_POPULAR_MOVIES)
     fun getPopularMovieRepo(@Query("api_key") key: String?): Observable<PopularMovieModel>
 
 }

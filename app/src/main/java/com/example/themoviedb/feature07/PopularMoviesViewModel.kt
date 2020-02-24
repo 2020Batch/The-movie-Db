@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.themoviedb.feature07.model.PopularMovieModel
 import io.reactivex.disposables.CompositeDisposable
 
-class PopularMoviesViewModel(val repo: MoviesRepository) : ViewModel() {
+class PopularMoviesViewModel(private val repo: MDBRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     val searchLiveDataSuccess = MutableLiveData<PopularMovieModel>()
@@ -14,10 +14,14 @@ class PopularMoviesViewModel(val repo: MoviesRepository) : ViewModel() {
 
     fun getPopularMovies() {
         compositeDisposable.add(
-            repo.getData().subscribe({ i -> searchLiveDataSuccess.value = i },
+            repo.getPopularMovies().subscribe({ i -> searchLiveDataSuccess.value = i },
                 { e -> searchLiveDataError.value = e.message })
 
         )
     }
 
+    override fun onCleared() {
+        compositeDisposable.clear()
+        super.onCleared()
+    }
 }

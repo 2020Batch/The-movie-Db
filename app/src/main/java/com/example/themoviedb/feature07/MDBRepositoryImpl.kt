@@ -5,14 +5,15 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class MoviesRepositoryImpl() : MoviesRepository {
-    private val client = MoviesRetrofitClient.getRetrofitInstance
+class MDBRepositoryImpl() : MDBRepository {
+    private val client = RetrofitClient.getRetrofitInstance
     private val call = client.getPopularMovieRepo(API_KEY)
 
-    override fun getData(): Observable<PopularMovieModel> {
+    override fun getPopularMovies(): Observable<PopularMovieModel> {
         return call
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
     }
+
 }
