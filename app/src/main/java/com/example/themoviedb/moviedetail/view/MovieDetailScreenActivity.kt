@@ -2,6 +2,7 @@ package com.example.themoviedb.moviedetail.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -56,7 +57,6 @@ class MovieDetailScreenActivity : AppCompatActivity() {
                 bindData(movieDetail)
                 hideProgressBar()
                 showMovieLayout()
-
             })
 
             errorMessage.observe(this@MovieDetailScreenActivity, Observer { error ->
@@ -85,13 +85,18 @@ class MovieDetailScreenActivity : AppCompatActivity() {
         }
 
         btn_retry.setOnClickListener {
+            hideError()
             showProgressBar()
             showMovie()
         }
 
         hideData()
         hideProgressBar()
-        error_message.visibility = View.VISIBLE
+        error_screen_movie_detail.visibility = View.VISIBLE
+    }
+
+    private fun hideError() {
+        error_screen_movie_detail.visibility = View.GONE
     }
 
     private fun hideData(){
