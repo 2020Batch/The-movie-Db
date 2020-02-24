@@ -2,4 +2,7 @@
     <string name="app_name">The Movie db</string>
     <string name="people">People</string>
     <string name="movies">Movies</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
 </resources>
