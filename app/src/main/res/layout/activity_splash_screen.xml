@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.themoviedb.MainActivity"
+    tools:context="com.example.themoviedb.LoginActivity"
     android:background="@color/colorPrimaryDark"
     >
 
@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:src="@drawable/ic_moviedb_logo"
         android:scaleType="centerInside"
+        android:contentDescription="@string/this_is_splash_screen"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
