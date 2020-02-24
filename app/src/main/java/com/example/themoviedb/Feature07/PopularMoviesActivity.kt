@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themoviedb.R
 import com.example.themoviedb.feature07.*
+import com.example.themoviedb.moviedetail.view.MovieDetailScreenActivity
 import kotlinx.android.synthetic.main.activity_popular_movies.*
 
 class PopularMoviesActivity : AppCompatActivity() {
