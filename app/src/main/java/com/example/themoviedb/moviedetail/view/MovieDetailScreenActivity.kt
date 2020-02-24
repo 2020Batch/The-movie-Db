@@ -2,7 +2,6 @@ package com.example.themoviedb.moviedetail.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -54,6 +53,8 @@ class MovieDetailScreenActivity : AppCompatActivity() {
     private fun setObservableData() {
         viewModel.apply {
             movieDetail.observe(this@MovieDetailScreenActivity, Observer { movieDetail ->
+                hideError()
+                showProgressBar()
                 bindData(movieDetail)
                 hideProgressBar()
                 showMovieLayout()
