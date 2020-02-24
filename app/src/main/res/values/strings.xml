@@ -5,6 +5,9 @@
     <string name="register">Click to Register</string>
     <string name="people">People</string>
     <string name="movies">Movies</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="retry">Retry</string>
+    <string name="connection_error">Connection Error</string>
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
     <string name="click_to_register"><u>Click here to register</u></string>

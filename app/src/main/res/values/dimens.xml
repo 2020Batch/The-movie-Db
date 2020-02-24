@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="card_height">150dp</dimen>
+    <dimen name="card_margin_bot">8dp</dimen>
+    <dimen name="tv_margin_start">20dp</dimen>
+    <dimen name="tv_margin_top">8dp</dimen>
     <dimen name="login_user_margin_top">188dp</dimen>
     <dimen name="login_password_marginTop">16dp</dimen>
     <dimen name="btnlogin_marginTop">16dp</dimen>
