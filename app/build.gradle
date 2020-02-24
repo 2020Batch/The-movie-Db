@@ -47,6 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+
     //Google View Model
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
@@ -60,5 +61,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.1'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
+
+
+    //Cardview
+    implementation "androidx.cardview:cardview:1.0.0"
+
+    //RecyclerView
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }
