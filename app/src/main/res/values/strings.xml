@@ -3,4 +3,15 @@
     <string name="movie_poster_description">Movie poster</string>
     <string name="general_error_message">Something gone wrong!</string>
     <string name="retry">Retry</string>
+    <string name="username">Username</string>
+    <string name="people">People</string>
+    <string name="movies">Movies</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="connection_error">Connection Error</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="click_to_register"><u>Click here to register</u></string>
+    <string name="register">Register</string>
+    <string name="this_is_splash_screen">This is Splash Screen</string>
+    <string name="login">Login</string>
 </resources>

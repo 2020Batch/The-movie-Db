@@ -58,10 +58,12 @@ dependencies {
     // Picasso
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
+    //Cardview
+    implementation "androidx.cardview:cardview:1.0.0"
+
     // Test rule for LiveData
     testImplementation "androidx.arch.core:core-testing:$livedatarule_version"
 
     // Mockito
     testImplementation "org.mockito:mockito-core:$mockito_version"
-
 }
