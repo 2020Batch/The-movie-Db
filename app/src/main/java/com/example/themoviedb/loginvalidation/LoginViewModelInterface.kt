@@ -1,11 +1,13 @@
 package com.example.themoviedb.loginvalidation
 
-import android.widget.TextView
-
 interface LoginViewModelInterface {
 
-    fun verifyCredentials(username: TextView, password: TextView) : Boolean
+    fun verifyCredentials(usernameVerification: Boolean, passwordVerification:Boolean)
 
-    fun isEmptyUsernameAndPassword(username: TextView, password: TextView) : Boolean
+    fun usernameVerification(username : String) :Boolean
+
+    fun passWordVerification(password : String): Boolean
+
+    fun isEmpty(field: String): Boolean
 
 }

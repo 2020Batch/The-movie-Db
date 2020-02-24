@@ -1,35 +1,54 @@
 package com.example.themoviedb.loginvalidation
 
-import android.widget.TextView
-import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.themoviedb.application.MyApp
-import com.example.themoviedb.application.PASSWORD_KEY
-import com.example.themoviedb.application.USERNAME_KEY
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 class LoginViewModel(private val repository: SharedPreferencesRepository) : ViewModel(), LoginViewModelInterface {
 
+    val verifyCredentials = MutableLiveData<Boolean>()
 
-    override fun verifyCredentials(username: TextView, password: TextView): Boolean {
+    val compositeDisposable = CompositeDisposable()
 
-        return (username.text == repository.returnUsername(USERNAME_KEY)
-                && password.text == repository.returnPassword(PASSWORD_KEY))
+    override fun verifyCredentials(usernameVerification: Boolean, passwordVerification: Boolean) {
+
+        verifyCredentials.value = usernameVerification && passwordVerification
 
     }
 
-    override fun isEmptyUsernameAndPassword(username: TextView, password: TextView) : Boolean  {
+    override fun usernameVerification(username: String): Boolean {
 
-        if( username.text.trim() == "" ) {
+        return compositeDisposable.add(
+            repository
+                .returnUsername(username)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe{t -> if(t == username){return@subscribe}}
+        )
+    }
 
-            Toast.makeText(MyApp.getApplicationContext(),"Username cannot be empty!",Toast.LENGTH_SHORT).show()
-           return true
-        } else if(password.text.trim() == "" ) {
+    override fun passWordVerification(password: String): Boolean {
 
-            Toast.makeText(MyApp.getApplicationContext(),"Password cannot be empty!",Toast.LENGTH_SHORT).show()
-            return true
+       return compositeDisposable.add(
+            repository
+                .returnUsername(password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe{t -> if(t == password){return@subscribe}}
+        )
+    }
 
-        }
-            return false   //If both fields are not empty, false is good to proceed with verifyCredentials()
-        }
 
+    override fun isEmpty(field: String) : Boolean {
+
+        return field.trim() == ""  //fields are not empty, false is good to proceed with verifyCredentials()
+
+    }
+
+    override fun onCleared() {
+        compositeDisposable.clear()
+        super.onCleared()
+    }
 }
