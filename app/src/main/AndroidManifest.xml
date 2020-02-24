@@ -13,7 +13,6 @@
 
         <activity android:name=".HomePageActivity"></activity>
 
-
         <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
