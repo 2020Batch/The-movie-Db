@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class MDBRepositoryImpl() : MDBRepository {
+class MdbRepositoryImpl() : MdbRepository {
     private val client = RetrofitClient.GET_RETROFIT_INSTANCE
     private val call = client.getPopularMovieRepo(API_KEY)
 
