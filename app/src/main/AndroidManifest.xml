@@ -19,6 +19,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".home.HomePageActivity" />
         <activity android:name=".login.view.RegisterActivity" />
@@ -26,6 +27,7 @@
         <activity android:name=".movies.detail.view.MovieDetailScreenActivity" />
         <activity android:name=".movies.list.view.PopularMoviesActivity" />
         <activity android:name=".people.list.view.PopularPeopleActivity" />
+        <activity android:name=".people.list.view.PopularPeopleDetailWebView"/>
     </application>
 
 </manifest>
