@@ -12,10 +12,8 @@
     <string name="password">Password</string>
     <string name="click_to_register"><u>Click here to register</u></string>
     <string name="register">Register</string>
-    <string name="error_empty_field">The field should not be empty!</string>
-    <string name="error_empty_password">Password field cannot be empty</string>
-    <string name="txt_successful_registration">Successfully registered user!</string>
-    <string name="txt_successful_login">Logged is successfully!</string>
+    <string name="name">Name:</string>
+    <string name="popularity_score">Popularity Score:</string>
     <string name="this_is_splash_screen">This is Splash Screen</string>
     <string name="login">Login</string>
 >>>>>>> develop
