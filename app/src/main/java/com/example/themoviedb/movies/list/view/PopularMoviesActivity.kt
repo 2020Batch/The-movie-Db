@@ -45,7 +45,6 @@ class PopularMoviesActivity : AppCompatActivity() {
                             intent.putExtra(MOVIE_ID_KEY, movieId)
                             startActivity(intent)
                         }
-
                     })
             setProgress(false)
             rv_popularMovies.visibility = VISIBLE
