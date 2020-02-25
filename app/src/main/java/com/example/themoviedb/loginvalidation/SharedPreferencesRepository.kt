@@ -1,13 +1,14 @@
 package com.example.themoviedb.loginvalidation
 
-import android.content.SharedPreferences
-import android.widget.TextView
+import android.app.Application
 import io.reactivex.Single
 
 interface SharedPreferencesRepository {
 
-    fun returnUsername(usernameKey : String): Single<String>
+    fun getCredentials(credentials: String): Single<Boolean?>
 
-    fun returnPassword(passwordKey : String): Single<String>
+    fun setCredentials(username: String, password: String) : Single<Boolean?>
+
+    fun getApplication(application: Application)
 
 }

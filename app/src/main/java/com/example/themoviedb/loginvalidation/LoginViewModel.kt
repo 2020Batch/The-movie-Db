@@ -1,50 +1,55 @@
 package com.example.themoviedb.loginvalidation
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import okhttp3.Credentials
 
-class LoginViewModel(private val repository: SharedPreferencesRepository) : ViewModel(), LoginViewModelInterface {
+class LoginViewModel(private val repository: SharedPreferencesRepository, application: Application) : AndroidViewModel(application) {
 
-    val verifyCredentials = MutableLiveData<Boolean>()
+    init {
+        repository.getApplication(application)
+    }
 
-    val compositeDisposable = CompositeDisposable()
+    private val compositeDisposable = CompositeDisposable()
 
-    override fun verifyCredentials(usernameVerification: Boolean, passwordVerification: Boolean) {
+    private val isRegistered = MutableLiveData<Boolean>()
 
-        verifyCredentials.value = usernameVerification && passwordVerification
+    private val registeredSuccess = MutableLiveData<Boolean>()
+
+    fun getVerificationLiveData() : MutableLiveData<Boolean>{
+
+        return isRegistered
 
     }
 
-    override fun usernameVerification(username: String): Boolean {
+    fun getRegistrationLiveData() : MutableLiveData<Boolean>{
 
-        return compositeDisposable.add(
+        return registeredSuccess
+
+    }
+
+    fun credentialsVerification(username: String, password : String) {
+
+        val credentials: String = Credentials.basic(username, password)
+
+        compositeDisposable.add(
             repository
-                .returnUsername(username)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe{t -> if(t == username){return@subscribe}}
+                .getCredentials(credentials)
+                .subscribe { t -> isRegistered.value = t}
+
         )
     }
 
-    override fun passWordVerification(password: String): Boolean {
+    fun credentialsRegistration(username: String, password : String) {
 
-       return compositeDisposable.add(
+        compositeDisposable.add(
             repository
-                .returnUsername(password)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe{t -> if(t == password){return@subscribe}}
+                .setCredentials(username, password)
+                .subscribe { t -> registeredSuccess.value = t}
+
         )
-    }
-
-
-    override fun isEmpty(field: String) : Boolean {
-
-        return field.trim() == ""  //fields are not empty, false is good to proceed with verifyCredentials()
-
     }
 
     override fun onCleared() {

@@ -23,7 +23,7 @@ class PopularMoviesActivity : AppCompatActivity() {
 
 
 
-        popMoviesViewModel = ViewModelProvider(this, PopularMoviesViewModelFactory(MDBRepositoryImpl())).get(PopularMoviesViewModel::class.java)
+        popMoviesViewModel = ViewModelProvider(this, PopularMoviesViewModelFactory(MdbRepositoryImpl())).get(PopularMoviesViewModel::class.java)
 
         setProgrsss(true)
         popMoviesViewModel.getPopularMovies()

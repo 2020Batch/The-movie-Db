@@ -16,12 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".HomePageActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
 
-        <activity android:name=".Feature07.PopularMoviesActivity">
+        <activity android:name=".HomePageActivity">
 
         </activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".application.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

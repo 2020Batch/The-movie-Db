@@ -9,4 +9,3 @@ const val END_POINT_POPULAR_MOVIES="movie/popular?"
 const val IMAGE_BASE = "https://image.tmdb.org/t/p/w300"
 
 const val MOVIE_ID_KEY = "movie_id_key"
-
