@@ -3,8 +3,8 @@ package com.example.themoviedb
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.themoviedb.loginvalidation.LoginRegistrationViewModel
-import com.example.themoviedb.loginvalidation.SharedPreferencesRepository
+import com.example.themoviedb.loginregistervalidation.LoginRegistrationViewModel
+import com.example.themoviedb.loginregistervalidation.SharedPreferencesRepository
 import io.reactivex.Single
 import okhttp3.Credentials
 import org.junit.Assert

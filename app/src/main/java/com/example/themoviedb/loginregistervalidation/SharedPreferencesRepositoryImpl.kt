@@ -1,9 +1,8 @@
-package com.example.themoviedb.loginvalidation
+package com.example.themoviedb.loginregistervalidation
 
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import com.example.themoviedb.application.MyApp
 import com.example.themoviedb.application.PASSWORD_KEY
 import com.example.themoviedb.application.PREFS_NAME
 import com.example.themoviedb.application.USERNAME_KEY

@@ -1,4 +1,4 @@
-package com.example.themoviedb.loginvalidation
+package com.example.themoviedb.loginregistervalidation
 
 import android.app.Application
 import io.reactivex.Single
