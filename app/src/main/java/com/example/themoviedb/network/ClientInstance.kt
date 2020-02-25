@@ -1,6 +1,7 @@
 package com.example.themoviedb.network
 
-import com.example.themoviedb.common.BASE_URL_POPULAR_PEOPLE
+
+import com.example.themoviedb.feature07.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -19,7 +20,7 @@ object ClientInstance {
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
-            .baseUrl(BASE_URL_POPULAR_PEOPLE)
+            .baseUrl(BASE_URL)
             .build().create(Client::class.java)
     }
 }
