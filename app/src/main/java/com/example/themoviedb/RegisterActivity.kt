@@ -1,6 +1,7 @@
 package com.example.themoviedb
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -45,11 +46,21 @@ class RegisterActivity : AppCompatActivity() {
 
                             if (registered) {
 
-                                TODO("If register Success")
+                                intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+
+                                Toast.makeText(
+                                    applicationContext,
+                                    "${getString(R.string.txt_successful_registration)}", Toast.LENGTH_SHORT
+                                ).show()
+
+                                startActivity(intent)
 
                             } else {
 
-                                TODO("If register Success")
+                                Toast.makeText(
+                                    applicationContext,
+                                    "${getString(R.string.txt_error_failed_registration)}", Toast.LENGTH_SHORT
+                                ).show()
 
                             }
 
