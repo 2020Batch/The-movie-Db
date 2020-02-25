@@ -17,4 +17,6 @@
     <dimen name="img_movie_detail_margin">10dp</dimen>
     <dimen name="error_message_text_size">20sp</dimen>
     <dimen name="error_screen_message_margin">10dp</dimen>
+    <dimen name="loginTextFieldWidth">214dp</dimen>
+    <dimen name="loginTextFieldHeight">42dp</dimen>
 </resources>
