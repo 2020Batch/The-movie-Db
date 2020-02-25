@@ -108,7 +108,7 @@ class LoginActivity : AppCompatActivity() {
             //Registration failed
             6 -> Toast.makeText(
                 applicationContext,
-                "${getString(R.string.txt_error_failed_registration)} $username}",
+                "$username ${getString(R.string.txt_error_failed_registration)}",
                 Toast.LENGTH_SHORT
             ).show()
 

@@ -112,7 +112,7 @@ class RegisterActivity : AppCompatActivity() {
             //Registration failed
             6 -> Toast.makeText(
                 applicationContext,
-                "${getString(R.string.txt_error_failed_registration)} ${et_reg_user_name.text}",
+                "$username ${getString(R.string.txt_error_failed_registration)}",
                 Toast.LENGTH_SHORT
             ).show()
 

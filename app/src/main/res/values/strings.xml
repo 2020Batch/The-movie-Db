@@ -17,7 +17,7 @@
     <string name="this_is_splash_screen">This is Splash Screen</string>
     <string name="login">Login</string>
     <string name="txt_error_failed_login">Username or password incorrect, </string>
-    <string name="txt_error_failed_registration">Registration failed - </string>
+    <string name="txt_error_failed_registration">already registered - registration failed</string>
     <string name="txt_error_empty_username">Username field cannot be empty!</string>
     <string name="txt_error_empty_password">Password field cannot be empty!</string>
     <string name="txt_error_password_too_short">Password cannot be less than</string>
