@@ -29,10 +29,10 @@ class RegisterActivity : AppCompatActivity() {
             val password = et_reg_password.text.toString()
 
             when {
-                username.trim().isBlank() -> {
+                username.isBlank() -> {
                     showToast(1, username)
                 }
-                password.trim().isBlank() -> {
+                password.isBlank() -> {
                     showToast(2, username)
                 }
                 password.length < PASSWORD_LENGTH -> {

@@ -30,8 +30,8 @@ class LoginActivity : AppCompatActivity() {
 
             when {
 
-                username.trim().isNullOrBlank() -> showToast(1, username)
-                password.trim().isNullOrBlank() -> showToast(2, username)
+                username.isBlank() -> showToast(1, username)
+                password.isBlank() -> showToast(2, username)
 
                 else -> {
 
