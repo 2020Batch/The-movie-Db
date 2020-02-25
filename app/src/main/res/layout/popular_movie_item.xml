@@ -2,39 +2,47 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="@dimen/card_height"
-    android:layout_marginBottom="@dimen/card_margin_bot">
+    android:layout_margin="@dimen/marginTop"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/marginTop"
+    app:cardElevation="@dimen/marginTop">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_5dp">
 
         <TextView
             android:id="@+id/tv_movieName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/tv_margin_start"
+            android:layout_margin="@dimen/padding_5dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/tv_movieReleaseDate"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_moviePoster"
-            app:layout_constraintTop_toTopOf="@+id/iv_moviePoster"
-            tools:text="Movie Name Goes Here" />
+            app:layout_constraintTop_toTopOf="@id/iv_moviePoster"
+            tools:text="Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)" />
 
         <TextView
             android:id="@+id/tv_movieReleaseDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/tv_margin_top"
+            app:layout_constraintBottom_toBottomOf="@id/iv_moviePoster"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_movieName"
             app:layout_constraintTop_toBottomOf="@+id/tv_movieName"
             tools:text="Date Of Release Goes Here" />
 
         <ImageView
             android:id="@+id/iv_moviePoster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/pop_movie_poster_width_item"
+            android:layout_height="@dimen/pop_movie_poster_height_item"
             android:contentDescription="@string/movie_poster"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/the_fifth_element_poster"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
