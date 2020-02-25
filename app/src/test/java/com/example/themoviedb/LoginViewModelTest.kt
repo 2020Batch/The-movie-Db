@@ -3,8 +3,8 @@ package com.example.themoviedb
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.themoviedb.loginregistervalidation.LoginRegistrationViewModel
-import com.example.themoviedb.loginregistervalidation.SharedPreferencesRepository
+import com.example.themoviedb.login.viewmodel.LoginRegistrationViewModel
+import com.example.themoviedb.login.model.SharedPreferencesRepository
 import io.reactivex.Single
 import okhttp3.Credentials
 import org.junit.Assert
@@ -39,7 +39,11 @@ class LoginViewModelTest {
     @Before
     fun setup(){
 
-        model = LoginRegistrationViewModel(repository, Application())
+        model =
+            LoginRegistrationViewModel(
+                repository,
+                Application()
+            )
 
         model.getVerificationLiveData().observeForever(verificationDataObserver)
 
