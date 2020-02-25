@@ -45,8 +45,14 @@ dependencies {
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
 
+    // CardView
+    implementation "androidx.cardview:cardview:$cardview_version"
+
     // RxAndroid
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 
     // View Model
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -55,15 +61,12 @@ dependencies {
     // Logging interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
-    // Picasso
-    implementation "com.squareup.picasso:picasso:$picasso_version"
-
-    //Cardview
-    implementation "androidx.cardview:cardview:1.0.0"
-
     // Test rule for LiveData
     testImplementation "androidx.arch.core:core-testing:$livedatarule_version"
 
     // Mockito
     testImplementation "org.mockito:mockito-core:$mockito_version"
+
+    //Picasso
+    implementation "com.squareup.picasso:picasso:$picasso_version"
 }
