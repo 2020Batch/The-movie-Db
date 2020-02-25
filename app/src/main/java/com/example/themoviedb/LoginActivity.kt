@@ -53,5 +53,13 @@ class LoginActivity : AppCompatActivity() {
 
             }
         }
+
+        click_to_register.setOnClickListener {
+
+            intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+
+            startActivity(intent)
+
+        }
     }
 }

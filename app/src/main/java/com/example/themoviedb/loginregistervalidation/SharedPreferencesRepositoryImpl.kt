@@ -22,7 +22,7 @@ class SharedPreferencesRepositoryImpl : SharedPreferencesRepository{
         val username = preferences.getString(USERNAME_KEY, "NONE")
         val password = preferences.getString(PASSWORD_KEY, "NONE")
 
-        val registeredCredentials = Credentials.basic(username, password)
+        val registeredCredentials = Credentials.basic(username!!, password!!)
 
         val isRegistered = registeredCredentials == credentials
 

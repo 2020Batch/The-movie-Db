@@ -54,6 +54,7 @@ dependencies {
 
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+    implementation "androidx.cardview:cardview:1.0.0"
 
     // RxAndroid
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
@@ -68,8 +69,10 @@ dependencies {
     // Test rule for LiveData
     testImplementation "androidx.arch.core:core-testing:$livedatarule_version"
 
-
     // Mockito
     testImplementation "org.mockito:mockito-core:$mockito_version"
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }
