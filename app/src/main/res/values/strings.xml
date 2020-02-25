@@ -16,5 +16,9 @@
     <string name="popularity_score">Popularity Score:</string>
     <string name="this_is_splash_screen">This is Splash Screen</string>
     <string name="login">Login</string>
->>>>>>> develop
+    <string name="txt_error_failed_login">Login unsuccessful :(</string>
+    <string name="txt_error_failed_registration">Registration failed :(</string>
+    <string name="error_empty_field">Field cannot be empty!</string>
+    <string name="txt_successful_registration">Registered successfully!</string>
+    >>>>>>> develop
 </resources>
