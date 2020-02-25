@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD:app/src/main/res/layout/activity_main.xml
     tools:context=".application.MainActivity">
+=======
+    tools:context=".LoginActivity">
+
+>>>>>>> develop:app/src/main/res/layout/activity_login.xml
 
     <EditText
         android:id="@+id/loginUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/loginTextFieldWidth"
+        android:layout_height="@dimen/loginTextFieldHeight"
         android:layout_marginTop="@dimen/login_user_margin_top"
         android:hint="@string/username"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +26,6 @@
         android:id="@+id/loginPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/login_password_marginTop"
         android:ems="10"
         android:hint="@string/password"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,14 +37,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/btnlogin_marginTop"
-        android:text="Button"
+        android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
 
     <TextView
-        android:id="@+id/registerText"
+        android:id="@+id/click_to_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/registerTextMarginTop"

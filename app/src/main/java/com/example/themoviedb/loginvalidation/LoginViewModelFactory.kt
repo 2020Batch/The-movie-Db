@@ -8,7 +8,7 @@ class LoginViewModelFactory(private val repository: SharedPreferencesRepository,
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
 
-        return LoginViewModel(repository,application) as T
+        return LoginRegistrationViewModel(repository,application) as T
 
     }
 }

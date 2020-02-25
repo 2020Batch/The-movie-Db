@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.disposables.CompositeDisposable
 import okhttp3.Credentials
 
-class LoginViewModel(private val repository: SharedPreferencesRepository, application: Application) : AndroidViewModel(application) {
+class LoginRegistrationViewModel(private val repository: SharedPreferencesRepository, application: Application) : AndroidViewModel(application) {
 
     init {
         repository.getApplication(application)
