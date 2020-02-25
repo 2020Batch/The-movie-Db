@@ -20,8 +20,6 @@ class MovieDetailScreenActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MovieDetailViewModel
 
-    private val movieId = intent.getIntExtra(MOVIE_ID_KEY, 0)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail_screen)
@@ -34,6 +32,8 @@ class MovieDetailScreenActivity : AppCompatActivity() {
     }
 
     private fun showMovie(){
+        val movieId = intent.getIntExtra(MOVIE_ID_KEY, 0)
+
         if (movieId == 0){
             showError(getString(R.string.general_error_message))
         } else {
