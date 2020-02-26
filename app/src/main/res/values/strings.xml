@@ -20,5 +20,5 @@
     <string name="txt_error_failed_registration">Registration failed :(</string>
     <string name="error_empty_field">Field cannot be empty!</string>
     <string name="txt_successful_registration">Registered successfully!</string>
-    >>>>>>> develop
+    <string name="actor_profile_photo">actor profile photo</string>
 </resources>
