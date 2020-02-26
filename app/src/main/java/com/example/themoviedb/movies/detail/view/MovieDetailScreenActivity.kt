@@ -29,6 +29,8 @@ class MovieDetailScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail_screen)
 
+        title = getString(R.string.txt_title_movie_details)
+
         val viewModelFactory = MovieDetailViewModelFactory(MovieDetailRepository())
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MovieDetailViewModel::class.java)

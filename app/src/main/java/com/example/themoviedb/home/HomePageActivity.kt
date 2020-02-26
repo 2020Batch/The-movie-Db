@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.themoviedb.R
+import com.example.themoviedb.common.NAME_KEY
 import com.example.themoviedb.movies.list.view.PopularMoviesActivity
 import com.example.themoviedb.people.list.view.PopularPeopleActivity
 import kotlinx.android.synthetic.main.activity_home_page.*
@@ -13,6 +14,8 @@ class HomePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
+
+        title = "${getString(R.string.txt_title_home)} - ${intent.getStringExtra(NAME_KEY)}"
 
         btn_movies.setOnClickListener {
             startActivity(
