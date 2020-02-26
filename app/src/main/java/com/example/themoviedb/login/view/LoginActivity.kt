@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.themoviedb.home.HomePageActivity
 import com.example.themoviedb.R
+import com.example.themoviedb.common.NAME_KEY
 import com.example.themoviedb.login.viewmodel.LoginRegViewModelFactory
 import com.example.themoviedb.login.viewmodel.LoginRegistrationViewModel
 import com.example.themoviedb.login.model.SharedPreferencesRepositoryImpl
@@ -19,6 +20,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        title = getString(R.string.txt_title_login)
 
         val model = ViewModelProvider(this,
             LoginRegViewModelFactory(
@@ -50,6 +53,9 @@ class LoginActivity : AppCompatActivity() {
 
                             intent = Intent(this@LoginActivity, HomePageActivity::class.java)
                             showToast(5, username)
+
+                            intent.putExtra(NAME_KEY, username)
+
                             startActivity(intent)
                         } else {
                             showToast(7, username)

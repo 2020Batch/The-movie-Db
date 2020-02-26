@@ -8,6 +8,8 @@ const val API_KEY = "3dad903d64b4a794f53445a4ae1cbb03"
 const val MOVIE_ID_KEY = "movie_id_key"
 const val API_KEY_NAME = "api_key"
 
+const val NAME_KEY = "username"
+
 const val MOVIE_DETAIL_ENDPOINT = "movie/{id}"
 const val POPULAR_MOVIES_ENDPOINT ="movie/popular"
 const val POPULAR_PEOPLE_ENDPOINT = "person/popular"

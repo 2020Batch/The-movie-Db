@@ -18,6 +18,8 @@ class PopularPeopleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_popular_people)
 
+        title = getString(R.string.txt_popular_people)
+
         val personViewModel = ViewModelProvider(
             this,
             PopularPeopleViewModelFactory(
