@@ -15,6 +15,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.RuntimeException
 
 @RunWith(MockitoJUnitRunner::class)
 class MovieDetailViewModelTest {
@@ -62,7 +63,7 @@ class MovieDetailViewModelTest {
         // Given
         val movieId = 0
         val errorMessage = "error_message"
-        val exception = IllegalStateException(errorMessage)
+        val exception = RuntimeException(errorMessage)
         `when`(repository.downloadMovieDetail(movieId)).thenReturn(Single.error(exception))
 
         // When
