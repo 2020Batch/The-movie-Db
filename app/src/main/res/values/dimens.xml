@@ -24,4 +24,9 @@
     <dimen name="card_view_layout_width">110dp</dimen>
     <dimen name="card_view_layout_height">150dp</dimen>
     <dimen name="card_view_marginEnd">2dp</dimen>
+    <dimen name="padding_5dp">5dp</dimen>
+    <dimen name="pop_movie_title_height_item">295dp</dimen>
+    <dimen name="pop_movie_title_width_item">65dp</dimen>
+    <dimen name="pop_movie_poster_width_item">95dp</dimen>
+    <dimen name="pop_movie_poster_height_item">135dp</dimen>
 </resources>
