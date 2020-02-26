@@ -1,12 +1,11 @@
 package com.example.themoviedb.common.network
 
-import com.example.themoviedb.common.API_KEY_NAME
-import com.example.themoviedb.common.MOVIE_DETAIL_ENDPOINT
-import com.example.themoviedb.common.POPULAR_MOVIES_ENDPOINT
-import com.example.themoviedb.common.POPULAR_PEOPLE_ENDPOINT
+import com.example.themoviedb.common.*
 import com.example.themoviedb.common.network.model.MovieDetail
 import com.example.themoviedb.common.network.model.PopularMovieModel
 import com.example.themoviedb.common.network.model.PopularPeopleModel
+import com.example.themoviedb.common.network.model.SimilarMovieModel
+import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -22,4 +21,10 @@ interface TMDBClient {
 
     @GET(POPULAR_MOVIES_ENDPOINT)
     fun getPopularMovieRepo(@Query(API_KEY_NAME) apiKey: String): Single<PopularMovieModel>
+
+    @GET(MOVIE_DETAIL_SIMILAR_ENDPOINT)
+    fun getSimilarMovies(
+        @Path("id") movieId: Int,
+        @Query(API_KEY_NAME) apiKey: String
+    ): Single<SimilarMovieModel>
 }

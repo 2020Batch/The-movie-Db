@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.themoviedb.movies.detail.model.MovieDetailRepositoryInterface
 import com.example.themoviedb.common.network.model.MovieDetail
+import com.example.themoviedb.common.network.model.SimilarMovieModel
 import io.reactivex.disposables.CompositeDisposable
 
 class MovieDetailViewModel(
@@ -21,12 +22,36 @@ class MovieDetailViewModel(
         get() = mErrorMessage
     private val mErrorMessage = MutableLiveData<String>()
 
+    val similarMovies : LiveData<SimilarMovieModel>
+        get() = mSimilarMovies
+    private val mSimilarMovies = MutableLiveData<SimilarMovieModel>()
+
+    val similarMoviesError : LiveData<String>
+        get() = mSimilarMoviesError
+    private val mSimilarMoviesError = MutableLiveData<String>()
+
+    fun getSimilarMovies(movieId: Int) {
+        compositeDisposable.add(
+            repository
+                .downloadSimilarMovies(movieId)
+                .subscribe(this::handleSimilarMovieData, this::handleSimilarMovieError)
+        )
+    }
+
     fun getMovieDetail(movieId: Int) {
         compositeDisposable.add(
             repository
                 .downloadMovieDetail(movieId)
                 .subscribe(this::handleData, this::handleError)
         )
+    }
+
+    private fun handleSimilarMovieData(similarMovieModel: SimilarMovieModel){
+        mSimilarMovies.value = similarMovieModel
+    }
+
+    private fun handleSimilarMovieError(t:Throwable){
+        mSimilarMoviesError.value = t.message
     }
 
     private fun handleData(movieDetail: MovieDetail) {
