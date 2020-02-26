@@ -14,6 +14,8 @@ import com.example.themoviedb.people.details.viewmodel.PersonDetailsViewModelFac
 import com.squareup.picasso.Picasso
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_person_details.*
+import kotlinx.android.synthetic.main.activity_popular_people.*
+import kotlinx.android.synthetic.main.error_screen.*
 import kotlinx.android.synthetic.main.popular_people_item.*
 
 class PersonDetailsActivity : AppCompatActivity() {
@@ -23,60 +25,45 @@ class PersonDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_person_details)
 
+        title = getString(R.string.txt_title_person_details)
+
         val viewModelFactory = PersonDetailsViewModelFactory(PersonDetailsRepositoryImpl())
         val personalDetailsViewModel: PersonDetailsViewModel
-        personalDetailsViewModel =   ViewModelProvider(this, viewModelFactory).get(PersonDetailsViewModel::class.java)
+        personalDetailsViewModel =
+            ViewModelProvider(this, viewModelFactory).get(PersonDetailsViewModel::class.java)
 
-        personalDetailsViewModel.fetchPersonDetail(1)
+        personalDetailsViewModel.fetchPersonDetail(556435)
 
-        personalDetailsViewModel.repositoryPersonDetail.observe(this,Observer{
-        personDetails ->
-            pb_person_details.visibility= View.VISIBLE
+        personalDetailsViewModel.repositoryPersonDetail.observe(this, Observer { personDetails ->
+            people_details_error.visibility = View.GONE
+            pb_person_details.visibility = View.GONE
             bindData(personDetails)
-            pb_person_details.visibility= View.GONE
+
 
         })
 
-        personalDetailsViewModel.errorPersonDetail.observe(this, Observer {
+        personalDetailsViewModel.errorPersonDetail.observe(this, Observer { fetchError ->
+            people_details_error.visibility = View.VISIBLE
+            tv_people_details_error_message.text = fetchError
 
-            people_details_error.visibility=View.VISIBLE
+            btn_people_details_retry.setOnClickListener {
+                personalDetailsViewModel.fetchPersonDetail(556435)
+
+            }
 
         })
 
     }
-    /* personViewModel.fetchPopularPeople()
 
-
-        personViewModel.getPopularPeople().observe(this, Observer { person ->
-            rv_popular_people.layoutManager = LinearLayoutManager(this)
-            pb_popular_people.visibility = View.GONE
-            rv_popular_people.adapter =
-                PopularPeopleAdapter(
-                    person
-                )
-        })
-
-        personViewModel.getFetchError().observe(this, Observer { fetchError ->
-            pb_popular_people.visibility = View.GONE
-            lil_popular_people_error.visibility = View.VISIBLE
-            tv_popular_people_error_message.text = fetchError
-            btn_popular_people_retry.setOnClickListener {
-                pb_popular_people.visibility = View.VISIBLE
-                lil_popular_people_error.visibility = View.GONE
-                personViewModel.fetchPopularPeople()
-            }
-        })
-    }*/
     private fun bindData(personDetailModel: PersonDetailModel) {
-        tv_person_name_details.text = personDetailModel.name
-        tv_person_biography_details.text = personDetailModel.biography
-        popularity_score_value.text  = personDetailModel.popularity.toString()
+        tv_popular_person_name.text = personDetailModel.name
+        tv_popular_person_bio.text = personDetailModel.biography
+        tv_popular_person_rating.text = personDetailModel.popularity.toString()
         val imgUrl = BASE_IMAGE_URL + personDetailModel.profilePath
 
         Picasso
             .get()
             .load(imgUrl)
-            .into(img_person_details)}
-
-
+            .into(iv_popular_person_image)
+    }
 }

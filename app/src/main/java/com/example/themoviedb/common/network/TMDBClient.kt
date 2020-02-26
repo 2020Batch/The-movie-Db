@@ -22,5 +22,5 @@ interface TMDBClient {
     fun getPopularMovieRepo(@Query(API_KEY_NAME) apiKey: String): Single<PopularMovieModel>
 
     @GET(PERSON_DETAILS_ENDPOINT)
-    fun getPersonDetail(@Path("id") personId: Int, @Query(API_KEY) apiKey: String):Single<PersonDetailModel>
+    fun getPersonDetail(@Path("person_id") personId: Int, @Query(API_KEY_NAME) apiKey: String):Single<PersonDetailModel>
 }

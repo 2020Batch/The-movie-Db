@@ -15,11 +15,18 @@ class PersonDetailsViewModel(private val personDetailsRepository: PersonDetailsR
 
 
     fun fetchPersonDetail(personId: Int) {
-        compositeDisposable.add(personDetailsRepository.getPersonDetails(personId).subscribe({ personDetails ->
-            repositoryPersonDetail.value = personDetails
-        }, { errorFetch ->
-            errorPersonDetail.value = errorFetch.message
-        }))
+        compositeDisposable.add(
+            personDetailsRepository
+                .getPersonDetails(personId)
+                .subscribe(
+                    { personDetails ->
+                        repositoryPersonDetail.value = personDetails
+                    },
+                    { errorFetch ->
+                        errorPersonDetail.value = errorFetch.message
+                    }
+                )
+        )
 
     }
 

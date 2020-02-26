@@ -21,4 +21,5 @@
     <string name="error_empty_field">Field cannot be empty!</string>
     <string name="txt_successful_registration">Registered successfully!</string>
     <string name="actor_profile_photo">actor profile photo</string>
+    <string name="txt_title_person_details">Person Details</string>
 </resources>

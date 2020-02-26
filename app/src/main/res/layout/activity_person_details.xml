@@ -6,56 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".people.details.view.PersonDetailsActivity">
 
-    <ImageView
-        android:id="@+id/img_person_details"
-        android:layout_width="wrap_content"
+
+    <TextView
+        android:id="@+id/tv_popular_person_name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/popular_person_detail_margin"
+        android:textSize="@dimen/popular_person_name_size"
+        android:textStyle="bold"
+
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tv_person_name_details"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/layout_width"
-        android:layout_marginStart="@dimen/marginTop"
-        android:layout_marginTop="@dimen/marginTop"
-        android:text="@string/name"
-        app:layout_constraintStart_toEndOf="@+id/img_popular_people"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:text="Cho Yeo-jeong" />
 
-    <TextView
-        android:id="@+id/tv_person_biography_details"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/layout_width"
-        android:layout_marginLeft="@dimen/marginTop"
-        android:layout_marginTop="@dimen/marginTop"
-        android:layout_marginRight="@dimen/marginTop"
+    <ImageView
+
+        android:id="@+id/iv_popular_person_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/popular_person_img_height"
+        android:layout_margin="@dimen/popular_person_detail_margin"
+        android:contentDescription="@string/actor_profile_photo"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_person_name"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Name Content" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_popular_person_name"
+
+        tools:src="@drawable/popular_person_profile_image" />
+
 
     <TextView
-        android:id="@+id/person_popularity_score_value"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/layout_width"
-        android:layout_marginLeft="@dimen/marginTop"
-        android:layout_marginTop="@dimen/marginTop"
-        android:layout_marginRight="@dimen/marginTop"
+        android:id="@+id/tv_popular_person_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/popular_person_detail_margin"
+        android:textSize="@dimen/popular_person_rating_size"
+        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/popularity_score"
-        app:layout_constraintTop_toBottomOf="@+id/tv_person_name_content"
-        tools:text="Popularity Score Value" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_popular_person_image"
+
+        tools:text="62.862" />
+
+    <TextView
+        android:id="@+id/tv_popular_person_bio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/popular_person_detail_margin"
+        android:textSize="@dimen/popular_person_bio_size"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_popular_person_rating"
+
+        tools:text="Cho Yeo-jeong (조여정) is a South Korean actress. Born on February 10, 1981, she began her career as a model in 1997 at the age of 16 and launched her acting career two years later. She is best known for her roles in the provocative period films “The Servant” (2010) and “The Concubine” (2012) and the television dramas “I Need Romance” (2011), “Haeundae Lovers” (2012), “Divorce Lawyer in Love” (2015) and “Perfect Wife” (2017)." />
+
     <ProgressBar
         android:id="@+id/pb_person_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.386" />
 
     <LinearLayout
         android:id="@+id/people_details_error"
