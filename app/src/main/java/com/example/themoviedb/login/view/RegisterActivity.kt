@@ -35,15 +35,17 @@ class RegisterActivity : AppCompatActivity() {
             val username = et_reg_user_name.text.toString()
             val password = et_reg_password.text.toString()
 
-            if (password.length < PASSWORD_LENGTH) {
-
-                Toast.makeText(applicationContext, "Password should be at least $PASSWORD_LENGTH characters long",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-            } else {
-
-                if (!username.isNullOrBlank() && !password.isNullOrBlank()) {
+            when {
+                username.isBlank() -> {
+                    showToast(1, username)
+                }
+                password.isBlank() -> {
+                    showToast(2, username)
+                }
+                password.length < PASSWORD_LENGTH -> {
+                    showToast(3, username)
+                }
+                else -> {
 
                     model.credentialsRegistration(username, password)
                     model.getRegistrationLiveData()
@@ -54,33 +56,74 @@ class RegisterActivity : AppCompatActivity() {
                             if (registered) {
 
                                 intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-
-                                Toast.makeText(
-                                    applicationContext,
-                                    "${getString(R.string.txt_successful_registration)}", Toast.LENGTH_SHORT
-                                ).show()
-
+                                showToast(4, username)
                                 startActivity(intent)
 
                             } else {
 
-                                Toast.makeText(
-                                    applicationContext,
-                                    "${getString(R.string.txt_error_failed_registration)}", Toast.LENGTH_SHORT
-                                ).show()
+                                showToast(6, username)
 
                             }
 
                         })
-                } else {
-
-                    Toast.makeText(
-                        applicationContext,
-                        "${getString(R.string.error_empty_field)}", Toast.LENGTH_SHORT
-                    ).show()
-
                 }
             }
+
         }
     }
+
+    private fun showToast(type: Int, username : String) {
+
+        when (type) {
+
+            //Empty Username
+            1 -> Toast.makeText(
+                applicationContext, getString(R.string.txt_error_empty_username),
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Empty password
+            2 -> Toast.makeText(
+                applicationContext, getString(R.string.txt_error_empty_password),
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Password too short
+            3 -> Toast.makeText(
+                applicationContext,
+                "${getString(R.string.txt_error_password_too_short)} $PASSWORD_LENGTH ${getString(R.string.txt_error_characters)}",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Registration success
+            4 -> Toast.makeText(
+                applicationContext,
+                "${getString(R.string.txt_successful_registration)} ${et_reg_user_name.text}",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Login success
+            5 -> Toast.makeText(
+                applicationContext,
+                "${getString(R.string.txt_successful_login)} ${et_reg_user_name.text}",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Registration failed
+            6 -> Toast.makeText(
+                applicationContext,
+                "$username ${getString(R.string.txt_error_failed_registration)}",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Login failed
+            7 -> Toast.makeText(
+                applicationContext,
+                "${getString(R.string.txt_error_failed_login)} ${et_reg_user_name.text}",
+                Toast.LENGTH_SHORT
+            ).show()
+
+        }
+    }
+
 }

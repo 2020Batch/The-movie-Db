@@ -14,7 +14,6 @@
         android:gravity="center"
         android:textSize="@dimen/movie_detail_name_size"
         android:textStyle="bold"
-        android:visibility="gone"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +27,7 @@
         android:layout_height="@dimen/img_movie_detail_height"
         android:layout_margin="@dimen/img_movie_detail_margin"
         android:contentDescription="@string/movie_poster_description"
-        android:visibility="gone"
+
 
         app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_name"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,18 +41,19 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/tv_movie_detail_description_margin"
         android:textSize="@dimen/movie_detail_description_size"
-        android:visibility="gone"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toBottomOf="@id/img_movie_detail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        tools:text="In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity."/>
+        tools:text="In 2257, a taxi driver is unintentionally given the task of saving a young girl who is part of the key that will ensure the survival of humanity." />
 
     <ProgressBar
         android:id="@+id/pb_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,5 +64,17 @@
         android:id="@+id/error_screen_movie_detail"
         layout="@layout/error_screen"
         android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_similarMovies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/content_description_similar_movies_recyclerView"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_movie_detail_description"
+        tools:layout_editor_absoluteY="419dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

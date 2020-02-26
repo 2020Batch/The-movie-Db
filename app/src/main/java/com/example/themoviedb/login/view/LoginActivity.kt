@@ -11,6 +11,7 @@ import com.example.themoviedb.R
 import com.example.themoviedb.login.viewmodel.LoginRegViewModelFactory
 import com.example.themoviedb.login.viewmodel.LoginRegistrationViewModel
 import com.example.themoviedb.login.model.SharedPreferencesRepositoryImpl
+import com.example.themoviedb.login.view.RegisterActivity.Companion.PASSWORD_LENGTH
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -31,32 +32,30 @@ class LoginActivity : AppCompatActivity() {
             val username = loginUser.text.toString()
             val password = loginPassword.text.toString()
 
-            if (!username.isNullOrBlank()   &&   !password.isNullOrBlank()){
+            when {
 
-                model.credentialsVerification(loginUser.text.toString(), loginPassword.text.toString())
-                model.getVerificationLiveData().observe(this@LoginActivity, Observer<Boolean> {
+                username.isBlank() -> showToast(1, username)
+                password.isBlank() -> showToast(2, username)
 
-                        verified ->
-                    if (verified) {
+                else -> {
 
-                         intent = Intent(this@LoginActivity, HomePageActivity::class.java)
+                    model.credentialsVerification(
+                        loginUser.text.toString(),
+                        loginPassword.text.toString()
+                    )
+                    model.getVerificationLiveData().observe(this@LoginActivity, Observer<Boolean> {
 
-                        startActivity(intent)
+                            verified ->
+                        if (verified) {
 
-                    } else {
-
-                        Toast.makeText(applicationContext, getString(R.string.txt_error_failed_login), Toast.LENGTH_SHORT).show()
-
-                    }
-
-                })
-            } else {
-
-                Toast.makeText(
-                    applicationContext,
-                    "${getString(R.string.error_empty_field)}", Toast.LENGTH_SHORT
-                ).show()
-
+                            intent = Intent(this@LoginActivity, HomePageActivity::class.java)
+                            showToast(5, username)
+                            startActivity(intent)
+                        } else {
+                            showToast(7, username)
+                        }
+                    })
+                }
             }
         }
 
@@ -65,6 +64,60 @@ class LoginActivity : AppCompatActivity() {
             intent = Intent(this@LoginActivity, RegisterActivity::class.java)
 
             startActivity(intent)
+
+        }
+    }
+
+    private fun showToast(type: Int, username : String) {
+
+        when (type) {
+
+            //Empty Username
+            1 -> Toast.makeText(
+                applicationContext, getString(R.string.txt_error_empty_username),
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Empty password
+            2 -> Toast.makeText(
+                applicationContext, getString(R.string.txt_error_empty_password),
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Password too short
+            3 -> Toast.makeText(
+                applicationContext,
+                "${getString(R.string.txt_error_password_too_short)} $PASSWORD_LENGTH ${getString(R.string.txt_error_characters)}",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Registration success
+            4 -> Toast.makeText(
+                applicationContext,
+                "${getString(R.string.txt_successful_registration)} $username",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Login success
+            5 -> Toast.makeText(
+                applicationContext,
+                "${getString(R.string.txt_successful_login)} $username",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Registration failed
+            6 -> Toast.makeText(
+                applicationContext,
+                "$username ${getString(R.string.txt_error_failed_registration)}",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            //Login failed
+            7 -> Toast.makeText(
+                applicationContext,
+                "${getString(R.string.txt_error_failed_login)} $username",
+                Toast.LENGTH_SHORT
+            ).show()
 
         }
     }

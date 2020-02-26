@@ -8,7 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.Credentials
 
-class SharedPreferencesRepositoryImpl: SharedPreferencesRepository {
+class SharedPreferencesRepositoryImpl : SharedPreferencesRepository {
 
     companion object {
         const val PREFS_NAME = "PREFS_NAME"
@@ -18,7 +18,7 @@ class SharedPreferencesRepositoryImpl: SharedPreferencesRepository {
 
     private lateinit var application: Application
 
-    override fun getCredentials(credentials : String): Single<Boolean?> {
+    override fun getCredentials(credentials: String): Single<Boolean?> {
 
         val preferences = application.getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
 
@@ -35,20 +35,25 @@ class SharedPreferencesRepositoryImpl: SharedPreferencesRepository {
 
     }
 
-    override fun setCredentials(username: String, password: String) : Single<Boolean?> {
+    override fun setCredentials(username: String, password: String): Single<Boolean?> {
 
-        val preferences =  application.getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        val preferences = application.getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
 
         val editor: SharedPreferences.Editor = preferences.edit()
 
-        editor.apply {
+        val isRegistered = username == preferences.getString( USERNAME_KEY,"NONE")
 
-            editor.putString(USERNAME_KEY, username)
-            editor.putString(PASSWORD_KEY, password)
-            editor.apply()
+        if (!isRegistered) {
 
+            editor.apply {
+
+                editor.putString(USERNAME_KEY, username)
+                editor.putString(PASSWORD_KEY, password)
+                editor.apply()
+
+            }
         }
-        return Single.just(true)
+        return Single.just(!isRegistered)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
