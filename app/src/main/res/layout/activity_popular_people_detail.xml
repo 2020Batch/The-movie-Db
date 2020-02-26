@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/popular_person_detail_margin"
-        android:gravity="center"
         android:textSize="@dimen/popular_person_name_size"
         android:textStyle="bold"
 
@@ -40,7 +39,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/popular_person_detail_margin"
-        android:gravity="center"
         android:textSize="@dimen/popular_person_rating_size"
         android:textStyle="bold"
 
