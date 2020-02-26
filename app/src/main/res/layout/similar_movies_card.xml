@@ -2,9 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="110dp"
-    android:layout_height="150dp"
-    android:layout_marginEnd="2dp">
+    android:layout_width="@dimen/card_view_layout_width"
+    android:layout_height="@dimen/card_view_layout_height"
+    android:layout_marginEnd="@dimen/card_view_marginEnd">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -22,14 +22,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/image_of_similar_movies"
             tools:srcCompat="@tools:sample/avatars[0]" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-
-            app:layout_constraintGuide_begin="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

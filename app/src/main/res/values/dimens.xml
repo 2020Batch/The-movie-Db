@@ -21,4 +21,7 @@
     <dimen name="error_screen_message_margin">10dp</dimen>
     <dimen name="loginTextFieldWidth">214dp</dimen>
     <dimen name="loginTextFieldHeight">42dp</dimen>
+    <dimen name="card_view_layout_width">110dp</dimen>
+    <dimen name="card_view_layout_height">150dp</dimen>
+    <dimen name="card_view_marginEnd">2dp</dimen>
 </resources>
