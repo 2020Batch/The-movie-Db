@@ -1,5 +1,6 @@
 package com.example.themoviedb.people.list.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themoviedb.R
+import com.example.themoviedb.common.POPULAR_PERSON_ID_KEY
+import com.example.themoviedb.people.details.view.PersonDetailsActivity
 import com.example.themoviedb.people.list.model.PopularPeopleRepositoryImpl
 import com.example.themoviedb.people.list.viewmodel.PopularPeopleViewModel
 import com.example.themoviedb.people.list.viewmodel.PopularPeopleViewModelFactory
@@ -17,6 +20,8 @@ class PopularPeopleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_popular_people)
+
+        title = getString(R.string.txt_popular_people)
 
         val personViewModel = ViewModelProvider(
             this,
@@ -32,10 +37,15 @@ class PopularPeopleActivity : AppCompatActivity() {
         personViewModel.getPopularPeople().observe(this, Observer { person ->
             rv_popular_people.layoutManager = LinearLayoutManager(this)
             pb_popular_people.visibility = View.GONE
+
             rv_popular_people.adapter =
-                PopularPeopleAdapter(
-                    person
-                )
+                PopularPeopleAdapter(person, object :OnPersonRecyclerItemClicked{
+                    override fun onRecyclerItemClicked(id: Int) {
+                        val intent = Intent(this@PopularPeopleActivity, PersonDetailsActivity::class.java)
+                        intent.putExtra(POPULAR_PERSON_ID_KEY, id)
+                        startActivity(intent)
+                    }
+                })
         })
 
         personViewModel.getFetchError().observe(this, Observer { fetchError ->

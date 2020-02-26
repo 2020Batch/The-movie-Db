@@ -1,10 +1,14 @@
 package com.example.themoviedb.movies.detail.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.themoviedb.R
 import com.example.themoviedb.common.BASE_IMAGE_URL
 import com.example.themoviedb.common.MOVIE_ID_KEY
@@ -12,6 +16,7 @@ import com.example.themoviedb.movies.detail.model.MovieDetailRepository
 import com.example.themoviedb.movies.detail.viewmodel.MovieDetailViewModel
 import com.example.themoviedb.movies.detail.viewmodel.MovieDetailViewModelFactory
 import com.example.themoviedb.common.network.model.MovieDetail
+import com.example.themoviedb.common.network.model.SimilarMovieModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_detail_screen.*
 import kotlinx.android.synthetic.main.error_screen.*
@@ -20,11 +25,11 @@ class MovieDetailScreenActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MovieDetailViewModel
 
-    private val movieId = intent.getIntExtra(MOVIE_ID_KEY, 0)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail_screen)
+
+        title = getString(R.string.txt_title_movie_details)
 
         val viewModelFactory = MovieDetailViewModelFactory(MovieDetailRepository())
 
@@ -33,13 +38,28 @@ class MovieDetailScreenActivity : AppCompatActivity() {
         showMovie()
     }
 
+    private fun showSimilarMovies(similarMoviesList: SimilarMovieModel){
+        rv_similarMovies.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        rv_similarMovies.adapter = SimilarMoviesAdapter(similarMoviesList,
+            object: RecyclerViewOnClick {
+            override fun recyclerViewOnClickListener(movieID: Int) {
+                viewModel.getMovieDetail(movieID)
+                viewModel.getSimilarMovies(movieID)
+            }
+
+        })
+    }
+
     private fun showMovie(){
+        val movieId = intent.getIntExtra(MOVIE_ID_KEY, 0)
+
         if (movieId == 0){
             showError(getString(R.string.general_error_message))
         } else {
             setObservableData()
 
             viewModel.getMovieDetail(movieId)
+            viewModel.getSimilarMovies(movieId)
         }
     }
 
@@ -60,6 +80,17 @@ class MovieDetailScreenActivity : AppCompatActivity() {
             })
 
             errorMessage.observe(this@MovieDetailScreenActivity, Observer { error ->
+                showError(error)
+            })
+
+            similarMovies.observe(this@MovieDetailScreenActivity, Observer { similarMoviesList ->
+                hideError()
+                showProgressBar()
+                showSimilarMovies(similarMoviesList)
+                hideProgressBar()
+            })
+
+            similarMoviesError.observe(this@MovieDetailScreenActivity, Observer { error ->
                 showError(error)
             })
         }
@@ -111,5 +142,9 @@ class MovieDetailScreenActivity : AppCompatActivity() {
 
     private fun showProgressBar(){
         pb_loading.visibility = View.VISIBLE
+    }
+
+    companion object {
+        const val TAG ="ClickedActivity"
     }
 }

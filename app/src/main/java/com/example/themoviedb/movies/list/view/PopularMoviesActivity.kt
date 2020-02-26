@@ -24,7 +24,7 @@ class PopularMoviesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_popular_movies)
 
-
+        title = getString(R.string.txt_title_popular_movies)
 
         popMoviesViewModel = ViewModelProvider(this, PopularMoviesViewModelFactory(MdbRepositoryImpl())).get(
             PopularMoviesViewModel::class.java)
@@ -45,7 +45,6 @@ class PopularMoviesActivity : AppCompatActivity() {
                             intent.putExtra(MOVIE_ID_KEY, movieId)
                             startActivity(intent)
                         }
-
                     })
             setProgress(false)
             rv_popularMovies.visibility = VISIBLE
