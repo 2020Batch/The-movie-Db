@@ -14,8 +14,11 @@
 
         <ImageView
             android:id="@+id/img_popular_people"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/person_image_width"
+            android:layout_height="@dimen/person_image_height"
+            android:layout_marginTop="@dimen/marginTop"
+            android:layout_marginBottom="@dimen/marginTop"
+            android:contentDescription="@string/person_picture"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -24,45 +27,46 @@
         <TextView
             android:id="@+id/tv_person_name"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/layout_width"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/marginTop"
-            android:layout_marginTop="@dimen/marginTop"
             android:text="@string/name"
+            app:layout_constraintBottom_toTopOf="@+id/popularity_score"
             app:layout_constraintStart_toEndOf="@+id/img_popular_people"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/img_popular_people" />
 
         <TextView
             android:id="@+id/tv_person_name_content"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/layout_width"
-            android:layout_marginLeft="@dimen/marginTop"
-            android:layout_marginTop="@dimen/marginTop"
-            android:layout_marginRight="@dimen/marginTop"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_person_name"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="@+id/tv_person_name"
             tools:text="Name Content" />
 
         <TextView
             android:id="@+id/popularity_score"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/layout_width"
-            android:layout_marginTop="@dimen/marginTop"
+            android:layout_height="wrap_content"
             android:text="@string/popularity_score"
+            app:layout_constraintBottom_toBottomOf="@+id/img_popular_people"
             app:layout_constraintStart_toStartOf="@+id/tv_person_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_person_name" />
 
         <TextView
             android:id="@+id/popularity_score_value"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/layout_width"
-            android:layout_marginLeft="@dimen/marginTop"
-            android:layout_marginTop="@dimen/marginTop"
-            android:layout_marginRight="@dimen/marginTop"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/popularity_score"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/popularity_score"
-            app:layout_constraintTop_toBottomOf="@+id/tv_person_name_content"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
             tools:text="Popularity Score Value" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/guideline_margin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

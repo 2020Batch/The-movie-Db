@@ -30,5 +30,8 @@
     <string name="txt_title_popular_movies">Popular Movies</string>
     <string name="txt_title_movie_details">Movie Details</string>
     <string name="txt_popular_people">Popular People</string>
+    <string name="content_description_similar_movies_recyclerView">Similar movies recycler view</string>
+    <string name="image_of_similar_movies">Image of similar movies</string>
+    <string name="person_picture">person_picture</string>
 
 </resources>
