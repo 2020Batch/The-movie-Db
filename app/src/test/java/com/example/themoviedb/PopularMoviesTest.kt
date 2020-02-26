@@ -14,7 +14,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.RuntimeException
 
 
 @RunWith(MockitoJUnitRunner::class)
@@ -54,6 +56,21 @@ class PopularMoviesTest {
 
         //Then
         Assert.assertEquals(movie, popMoviesViewModel.searchLiveDataSuccess.value)
+    }
+
+    @Test
+    fun `searchLiveDataError gets error info successfully`(){
+        //Given
+        val errorMessage = "error"
+        `when`(repository.getPopularMovies()).thenReturn(Single.error(RuntimeException(errorMessage)))
+
+        //When
+        popMoviesViewModel.getPopularMovies()
+
+        //Then
+        Assert.assertEquals(errorMessage, popMoviesViewModel.searchLiveDataError.value)
+
+
     }
 
 
