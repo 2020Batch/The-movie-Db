@@ -14,6 +14,3 @@ const val MOVIE_DETAIL_ENDPOINT = "movie/{id}"
 const val MOVIE_DETAIL_SIMILAR_ENDPOINT = "movie/{id}/similar"
 const val POPULAR_MOVIES_ENDPOINT ="movie/popular"
 const val POPULAR_PEOPLE_ENDPOINT = "person/popular"
-
-const val PERSON_DETAILS_ENDPOINT ="person/{person_id}"
-
