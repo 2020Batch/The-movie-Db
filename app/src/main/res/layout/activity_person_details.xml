@@ -6,4 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".people.details.view.PersonDetailsActivity">
 
+    <ImageView
+        android:id="@+id/img_person_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_person_name_details"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/layout_width"
+        android:layout_marginStart="@dimen/marginTop"
+        android:layout_marginTop="@dimen/marginTop"
+        android:text="@string/name"
+        app:layout_constraintStart_toEndOf="@+id/img_popular_people"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_person_biography_details"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/layout_width"
+        android:layout_marginLeft="@dimen/marginTop"
+        android:layout_marginTop="@dimen/marginTop"
+        android:layout_marginRight="@dimen/marginTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_person_name"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Name Content" />
+
+    <TextView
+        android:id="@+id/person_popularity_score_value"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/layout_width"
+        android:layout_marginLeft="@dimen/marginTop"
+        android:layout_marginTop="@dimen/marginTop"
+        android:layout_marginRight="@dimen/marginTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/popularity_score"
+        app:layout_constraintTop_toBottomOf="@+id/tv_person_name_content"
+        tools:text="Popularity Score Value" />
+    <ProgressBar
+        android:id="@+id/pb_person_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/people_details_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_people_details_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginTop"
+            tools:text="Error Message" />
+
+        <Button
+            android:id="@+id/btn_people_details_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/retry" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
