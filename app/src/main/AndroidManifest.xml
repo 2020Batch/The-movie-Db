@@ -26,6 +26,7 @@
         <activity android:name=".movies.detail.view.MovieDetailScreenActivity" />
         <activity android:name=".movies.list.view.PopularMoviesActivity" />
         <activity android:name=".people.list.view.PopularPeopleActivity" />
+        <activity android:name=".people.details.view.PersonDetailsActivity"/>
         <activity android:name=".people.list.view.PopularPeopleDetailWebView"/>
     </application>
 

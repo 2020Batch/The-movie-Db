@@ -1,5 +1,6 @@
 package com.example.themoviedb.people.details.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.themoviedb.common.network.model.PersonDetailModel
 import com.example.themoviedb.people.details.model.PersonDetailsRepositoryImpl
 import com.example.themoviedb.people.details.viewmodel.PersonDetailsViewModel
 import com.example.themoviedb.people.details.viewmodel.PersonDetailsViewModelFactory
+import com.example.themoviedb.people.list.view.PopularPeopleDetailWebView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_person_details.*
 
@@ -36,8 +38,6 @@ class PersonDetailsActivity : AppCompatActivity() {
             people_details_error.visibility = View.GONE
             pb_person_details.visibility = View.GONE
             bindData(personDetails)
-
-
         })
 
         personalDetailsViewModel.errorPersonDetail.observe(this, Observer { fetchError ->
@@ -46,11 +46,15 @@ class PersonDetailsActivity : AppCompatActivity() {
 
             btn_people_details_retry.setOnClickListener {
                 personalDetailsViewModel.fetchPersonDetail(personId)
-
             }
-
         })
 
+        iv_popular_person_image.setOnClickListener{
+            val intent = Intent(this, PopularPeopleDetailWebView::class.java)
+            intent.putExtra("EXTRA_PEOPLE_WEB","https://www.carriefisher.com/")
+            startActivity(intent)
+
+        }
     }
 
     private fun bindData(personDetailModel: PersonDetailModel) {
@@ -58,10 +62,14 @@ class PersonDetailsActivity : AppCompatActivity() {
         tv_popular_person_bio.text = personDetailModel.biography
         tv_popular_person_rating.text = personDetailModel.popularity.toString()
         val imgUrl = BASE_IMAGE_URL + personDetailModel.profilePath
-
         Picasso
             .get()
             .load(imgUrl)
             .into(iv_popular_person_image)
+
+
+
+
+
     }
 }

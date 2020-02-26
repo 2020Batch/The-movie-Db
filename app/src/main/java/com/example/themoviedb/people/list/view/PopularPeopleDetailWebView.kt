@@ -25,7 +25,10 @@ class PopularPeopleDetailWebView : AppCompatActivity() {
             }
         }
 
-        myWebView.loadUrl("https://www.carriefisher.com/")
+        val people = intent.getSerializableExtra("EXTRA_PEOPLE_WEB")
+
+
+        myWebView.loadUrl(people.toString())
 
     }
 
