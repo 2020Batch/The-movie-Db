@@ -37,7 +37,7 @@ class PopularPeopleViewModelTest {
 
     @Before
     fun setup() {
-        val person = Person("TAE", 93.4, "image.png")
+        val person = Person("TAE", 93.4,556435, "image.png")
         viewModelTest = PopularPeopleViewModel(repository)
         viewModelTest.getPopularPeople().observeForever(popularPeopleObserver)
         viewModelTest.getFetchError().observeForever(fetchErrorObserver)
