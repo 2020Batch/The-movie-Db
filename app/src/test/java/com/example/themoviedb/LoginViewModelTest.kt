@@ -50,7 +50,7 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `when repository is called and  the data is found in the database`() {
+    fun `when credentialsVerification is called and  the data is found in the database`() {
 
         //Given
         Mockito.`when`(repository.getCredentials(registeredCredentials)).thenReturn(Single.just(true))
@@ -65,7 +65,7 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `when repository is called and the data is not found in the database, Livedata returns false`(){
+    fun `when credentialsVerification is called and the data is not found in the database, Livedata returns false`(){
 
         //Given
         Mockito.`when`(repository.getCredentials(incorrectCredentials)).thenReturn(Single.just(false))
@@ -75,6 +75,20 @@ class LoginViewModelTest {
 
         //Then
        Mockito.verify(verificationDataObserver).onChanged(false)
+        Assert.assertFalse(model.getVerificationLiveData().value!!)
+
+    }
+    @Test
+    fun `when credentialsRegistration is called Livedata returns true`(){
+
+        //Given
+        Mockito.`when`(repository.getCredentials(incorrectCredentials)).thenReturn(Single.just(false))
+
+        //When
+        model.credentialsVerification("Lloyd", "321")
+
+        //Then
+        Mockito.verify(verificationDataObserver).onChanged(false)
         Assert.assertFalse(model.getVerificationLiveData().value!!)
 
     }
