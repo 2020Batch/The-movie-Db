@@ -15,6 +15,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.RuntimeException
 
 @RunWith(MockitoJUnitRunner::class)
 class PopularPeopleViewModelTest {
@@ -37,7 +38,7 @@ class PopularPeopleViewModelTest {
 
     @Before
     fun setup() {
-        val person = Person("TAE", 93.4, "image.png")
+        val person = Person("TAE", 93.4,1, "image.png")
         viewModelTest = PopularPeopleViewModel(repository)
         viewModelTest.getPopularPeople().observeForever(popularPeopleObserver)
         viewModelTest.getFetchError().observeForever(fetchErrorObserver)
@@ -61,7 +62,7 @@ class PopularPeopleViewModelTest {
     fun `fetch Popular People call UnSuccessful`() {
         //Given
         val error = "error"
-        `when`(repository.getPopularPeople()).thenReturn(Single.error(NullPointerException(error)))
+        `when`(repository.getPopularPeople()).thenReturn(Single.error(RuntimeException(error)))
 
         //When
         viewModelTest.fetchPopularPeople()
