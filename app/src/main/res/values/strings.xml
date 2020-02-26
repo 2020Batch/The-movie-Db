@@ -16,6 +16,7 @@
     <string name="popularity_score">Popularity Score:</string>
     <string name="this_is_splash_screen">This is Splash Screen</string>
     <string name="login">Login</string>
+    <string name="person_picture">Profile Picture</string>
     <string name="txt_error_failed_login">Username or password incorrect, </string>
     <string name="txt_error_failed_registration">already registered - registration failed</string>
     <string name="txt_error_empty_username">Username field cannot be empty!</string>
@@ -24,5 +25,5 @@
     <string name="txt_error_characters">characters</string>
     <string name="txt_successful_registration">Successfully registered user</string>
     <string name="txt_successful_login">Successfully logged in user</string>
-
+  
 </resources>
