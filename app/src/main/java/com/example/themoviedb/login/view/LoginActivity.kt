@@ -20,8 +20,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val model = ViewModelProvider(
-            this,
+        title = getString(R.string.txt_title_login)
+
+        val model = ViewModelProvider(this,
             LoginRegViewModelFactory(
                 SharedPreferencesRepositoryImpl(),
                 application

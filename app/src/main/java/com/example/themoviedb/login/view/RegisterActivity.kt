@@ -23,8 +23,9 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val model = ViewModelProvider(
-            this,
+        title = getString(R.string.txt_title_register)
+
+        val model = ViewModelProvider(this,
             LoginRegViewModelFactory(
                 SharedPreferencesRepositoryImpl(),
                 application

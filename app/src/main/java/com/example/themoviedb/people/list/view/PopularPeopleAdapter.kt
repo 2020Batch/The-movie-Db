@@ -12,7 +12,10 @@ import com.example.themoviedb.common.network.model.PopularPeopleModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.popular_people_item.view.*
 
-class PopularPeopleAdapter(private val popularPeople: PopularPeopleModel) :
+class PopularPeopleAdapter(
+    private val popularPeople: PopularPeopleModel,
+    private val onRecyclerItemClicked: OnPersonRecyclerItemClicked
+) :
     RecyclerView.Adapter<PopularPeopleAdapter.PopularPeopleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularPeopleViewHolder {
@@ -35,11 +38,17 @@ class PopularPeopleAdapter(private val popularPeople: PopularPeopleModel) :
         Picasso.get()
             .load(BASE_IMAGE_URL + popularPeople.people[position].profilePath)
             .into(holder.personImage)
+        holder.bind(popularPeople.people[position].id)
     }
 
     inner class PopularPeopleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val personName: TextView = itemView.tv_person_name_content
         val personImage: ImageView = itemView.img_popular_people
         val popularityScore: TextView = itemView.popularity_score_value
+        fun bind(id: Int) {
+            itemView.setOnClickListener {
+                onRecyclerItemClicked.onRecyclerItemClicked(id)
+            }
+        }
     }
 }

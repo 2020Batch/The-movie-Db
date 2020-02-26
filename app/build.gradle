@@ -49,8 +49,8 @@ dependencies {
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation"com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation"com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
@@ -65,7 +65,7 @@ dependencies {
 
     // Logging interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
-    
+
     // Test rule for LiveData
     testImplementation "androidx.arch.core:core-testing:$livedatarule_version"
 
@@ -74,5 +74,4 @@ dependencies {
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
-
 }
