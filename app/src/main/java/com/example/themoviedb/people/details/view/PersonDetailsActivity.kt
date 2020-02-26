@@ -7,16 +7,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.themoviedb.R
 import com.example.themoviedb.common.BASE_IMAGE_URL
+import com.example.themoviedb.common.POPULAR_PERSON_ID_KEY
 import com.example.themoviedb.common.network.model.PersonDetailModel
 import com.example.themoviedb.people.details.model.PersonDetailsRepositoryImpl
 import com.example.themoviedb.people.details.viewmodel.PersonDetailsViewModel
 import com.example.themoviedb.people.details.viewmodel.PersonDetailsViewModelFactory
 import com.squareup.picasso.Picasso
-import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_person_details.*
-import kotlinx.android.synthetic.main.activity_popular_people.*
-import kotlinx.android.synthetic.main.error_screen.*
-import kotlinx.android.synthetic.main.popular_people_item.*
 
 class PersonDetailsActivity : AppCompatActivity() {
     private lateinit var personalDetailsViewModel: PersonDetailsViewModel
@@ -31,8 +28,9 @@ class PersonDetailsActivity : AppCompatActivity() {
         val personalDetailsViewModel: PersonDetailsViewModel
         personalDetailsViewModel =
             ViewModelProvider(this, viewModelFactory).get(PersonDetailsViewModel::class.java)
+        val personId= intent.getIntExtra(POPULAR_PERSON_ID_KEY,0)
 
-        personalDetailsViewModel.fetchPersonDetail(556435)
+        personalDetailsViewModel.fetchPersonDetail(personId)
 
         personalDetailsViewModel.repositoryPersonDetail.observe(this, Observer { personDetails ->
             people_details_error.visibility = View.GONE
@@ -47,7 +45,7 @@ class PersonDetailsActivity : AppCompatActivity() {
             tv_people_details_error_message.text = fetchError
 
             btn_people_details_retry.setOnClickListener {
-                personalDetailsViewModel.fetchPersonDetail(556435)
+                personalDetailsViewModel.fetchPersonDetail(personId)
 
             }
 
