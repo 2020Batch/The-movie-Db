@@ -7,7 +7,10 @@ import com.example.themoviedb.login.model.SharedPreferencesRepository
 import io.reactivex.disposables.CompositeDisposable
 import okhttp3.Credentials
 
-class LoginRegistrationViewModel(private val repository: SharedPreferencesRepository, application: Application) : AndroidViewModel(application) {
+class LoginRegistrationViewModel(
+    private val repository: SharedPreferencesRepository,
+    application: Application
+) : AndroidViewModel(application) {
 
     init {
         repository.getApplication(application)
@@ -19,36 +22,36 @@ class LoginRegistrationViewModel(private val repository: SharedPreferencesReposi
 
     private val registeredSuccess = MutableLiveData<Boolean>()
 
-    fun getVerificationLiveData() : MutableLiveData<Boolean>{
+    fun getVerificationLiveData(): MutableLiveData<Boolean> {
 
         return isRegistered
 
     }
 
-    fun getRegistrationLiveData() : MutableLiveData<Boolean>{
+    fun getRegistrationLiveData(): MutableLiveData<Boolean> {
 
         return registeredSuccess
 
     }
 
-    fun credentialsVerification(username: String, password : String) {
+    fun credentialsVerification(username: String, password: String) {
 
         val credentials: String = Credentials.basic(username, password)
 
         compositeDisposable.add(
             repository
                 .getCredentials(credentials)
-                .subscribe { t -> isRegistered.value = t}
+                .subscribe { t -> isRegistered.value = t }
 
         )
     }
 
-    fun credentialsRegistration(username: String, password : String) {
+    fun credentialsRegistration(username: String, password: String) {
 
         compositeDisposable.add(
             repository
                 .setCredentials(username, password)
-                .subscribe { t -> registeredSuccess.value = t}
+                .subscribe { t -> registeredSuccess.value = t }
 
         )
     }

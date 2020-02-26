@@ -18,6 +18,11 @@ class SharedPreferencesRepositoryImpl : SharedPreferencesRepository {
 
     private lateinit var application: Application
 
+    /**
+     * Returns
+     * true if credentials are right
+     * false if credentials are wrong
+     */
     override fun getCredentials(credentials: String): Single<Boolean?> {
 
         val preferences = application.getSharedPreferences(PREFS_NAME, MODE_PRIVATE)

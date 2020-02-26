@@ -23,12 +23,27 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val model = ViewModelProvider(this,
+        val model = ViewModelProvider(
+            this,
             LoginRegViewModelFactory(
                 SharedPreferencesRepositoryImpl(),
                 application
             )
         ).get(LoginRegistrationViewModel::class.java)
+
+        model.getRegistrationLiveData()
+            .observe(this@RegisterActivity, Observer<Boolean> { registered ->
+
+                if (registered) {
+
+                    intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                    showToast(4)
+                    startActivity(intent)
+
+                } else {
+                    showToast(6)
+                }
+            })
 
         btn_register.setOnClickListener {
 
@@ -37,42 +52,24 @@ class RegisterActivity : AppCompatActivity() {
 
             when {
                 username.isBlank() -> {
-                    showToast(1, username)
+                    showToast(1)
                 }
                 password.isBlank() -> {
-                    showToast(2, username)
+                    showToast(2)
                 }
                 password.length < PASSWORD_LENGTH -> {
-                    showToast(3, username)
+                    showToast(3)
                 }
                 else -> {
 
                     model.credentialsRegistration(username, password)
-                    model.getRegistrationLiveData()
-                        .observe(this@RegisterActivity, Observer<Boolean> {
-
-                                registered ->
-
-                            if (registered) {
-
-                                intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                                showToast(4, username)
-                                startActivity(intent)
-
-                            } else {
-
-                                showToast(6, username)
-
-                            }
-
-                        })
                 }
             }
 
         }
     }
 
-    private fun showToast(type: Int, username : String) {
+    private fun showToast(type: Int) {
 
         when (type) {
 
@@ -102,27 +99,12 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
 
-            //Login success
-            5 -> Toast.makeText(
-                applicationContext,
-                "${getString(R.string.txt_successful_login)} ${et_reg_user_name.text}",
-                Toast.LENGTH_SHORT
-            ).show()
-
             //Registration failed
             6 -> Toast.makeText(
                 applicationContext,
-                "$username ${getString(R.string.txt_error_failed_registration)}",
+                "${et_reg_user_name.text} ${getString(R.string.txt_error_failed_registration)}",
                 Toast.LENGTH_SHORT
             ).show()
-
-            //Login failed
-            7 -> Toast.makeText(
-                applicationContext,
-                "${getString(R.string.txt_error_failed_login)} ${et_reg_user_name.text}",
-                Toast.LENGTH_SHORT
-            ).show()
-
         }
     }
 
