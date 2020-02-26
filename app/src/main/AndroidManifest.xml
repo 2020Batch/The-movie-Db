@@ -14,17 +14,19 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".login.view.SplashScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".home.HomePageActivity" />
         <activity android:name=".login.view.RegisterActivity" />
         <activity android:name=".login.view.LoginActivity" />
         <activity android:name=".movies.detail.view.MovieDetailScreenActivity" />
-        <activity android:name=".movies.list.view.PopularMoviesActivity" />
+        <activity android:name=".movies.list.view.PopularMoviesActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> 
+        </activity>
         <activity android:name=".people.list.view.PopularPeopleActivity" />
     </application>
 

@@ -20,5 +20,7 @@
     <string name="txt_error_failed_registration">Registration failed :(</string>
     <string name="error_empty_field">Field cannot be empty!</string>
     <string name="txt_successful_registration">Registered successfully!</string>
+    <string name="content_description_similar_movies_recyclerView">Similar movies recycler view</string>
+    <string name="image_of_similar_movies">Image of similar movies</string>
     >>>>>>> develop
 </resources>
