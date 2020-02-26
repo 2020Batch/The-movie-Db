@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.themoviedb.R
 import com.example.themoviedb.common.POPULAR_PERSON_ID_KEY
+import com.example.themoviedb.people.details.view.PersonDetailsActivity
 import com.example.themoviedb.people.list.model.PopularPeopleRepositoryImpl
 import com.example.themoviedb.people.list.viewmodel.PopularPeopleViewModel
 import com.example.themoviedb.people.list.viewmodel.PopularPeopleViewModelFactory
@@ -40,7 +41,7 @@ class PopularPeopleActivity : AppCompatActivity() {
             rv_popular_people.adapter =
                 PopularPeopleAdapter(person, object :OnPersonRecyclerItemClicked{
                     override fun onRecyclerItemClicked(id: Int) {
-                        val intent = Intent(this@PopularPeopleActivity, PersonDetailActivity::class.java)
+                        val intent = Intent(this@PopularPeopleActivity, PersonDetailsActivity::class.java)
                         intent.putExtra(POPULAR_PERSON_ID_KEY, id)
                         startActivity(intent)
                     }
