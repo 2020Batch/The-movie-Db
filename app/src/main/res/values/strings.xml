@@ -26,4 +26,6 @@
     <string name="txt_successful_login">Successfully logged in user</string>
     <string name="content_description_similar_movies_recyclerView">Similar movies recycler view</string>
     <string name="image_of_similar_movies">Image of similar movies</string>
+    <string name="person_picture">person_picture</string>
+
 </resources>
